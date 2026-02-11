@@ -172,10 +172,10 @@ async function sendOtp() {
       showStep('step-otp');
       document.getElementById('otp').focus();
     } else {
-      setStatus('status-phone', data.message || 'Failed to send OTP', 'error');
+      setStatus('status-phone', resp.status + ': ' + (data.message || JSON.stringify(data)), 'error');
     }
   } catch (e) {
-    setStatus('status-phone', 'Network error. Try again.', 'error');
+    setStatus('status-phone', 'Error: ' + e.message, 'error');
   }
   btn.disabled = false;
 }
